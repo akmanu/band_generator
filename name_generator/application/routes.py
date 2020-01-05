@@ -5,7 +5,6 @@ from flask import render_template, redirect, url_for, request
 from application import app, words
 from random import randint
 import requests
-import words
 
 @app.route('/', methods = ["GET"])
 def generate_band_info():
