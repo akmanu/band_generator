@@ -1,0 +1,11 @@
+{% extends "layout.html" %}
+{% block body_content %}
+	<h1>Home</h1>
+	<h2>Generate a Number</h2>
+	<div>Your randomly generated number is: {{ number }}</div>
+	<form method="POST" action="">
+        <div class="form-group">
+            {{ generate_number.submit }}
+        </div>
+    </form>
+{% endblock body_content %}
