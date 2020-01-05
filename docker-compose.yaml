@@ -18,8 +18,18 @@ services:
     container_name: server
     build: ./server
     env_file: .env
-  service-1:
-    image: service-1
-    container_name: service-1
-    build: ./service-1
+  name_generator:
+    image: name_generator
+    container_name: name_generator
+    build: ./name_generator
+    env_file: .env
+  stats_generator:
+    image: stats_generator
+    container_name: stats_generator
+    build: ./stats_generator
+    env_file: .env
+  final_generation:
+    image: final_generation
+    container_name: final_generation
+    build: ./final_generation
     env_file: .env
