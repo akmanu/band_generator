@@ -13,7 +13,7 @@ WORKDIR /opt/server
 COPY . .
 
 # app will run on port 5001
-EXPOSE 5001
+EXPOSE 5003
 
 # install dependencies
 RUN pip install -r requirements.txt
