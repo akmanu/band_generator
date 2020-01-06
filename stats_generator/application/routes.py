@@ -6,7 +6,7 @@ from application import app
 from random import randint
 import requests
 
-@app.route('/', methods = ["POST"])
+@app.route('/servce3', methods = ["POST"])
 def generate_band_info():
 	band = request.get_json()
 
@@ -24,3 +24,7 @@ def generate_band_info():
 
 	requests.post("localhost:5004", json = band)
 	print("Band stats package sent to service 4")
+
+@app.route('/service3/health-check', methods = ['GET'])
+def health_check():
+    return "OK"

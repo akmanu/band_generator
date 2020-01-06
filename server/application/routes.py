@@ -7,14 +7,14 @@ from application.forms import GenerateBandButton
 import requests
 
 # Route to home page
-@app.route("/", methods = ["GET", "POST"])
+@app.route("/server", methods = ["GET", "POST"])
 def home():
 	# button to generate a random number
 	generate_band = GenerateBandButton()
 
 	if request.method == "POST":
 		band = request.get_json()
-		return redirect(url_for("home"))
+		#return redirect(url_for("home"))
 	else:
 		band = {"name" : "",
 			"genre" : "",
