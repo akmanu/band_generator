@@ -25,7 +25,7 @@ def home():
 
 	# send request to name_generator to begin generating when button is pressed
 	if generate_band.is_submitted():
-		requests.get("http://localhost:5002/")
+		requests.get("http://localhost:5002/service2")
 		print("Package requested")
 
 	return render_template("index.html", title = "Home", band = band, generate_band = generate_band)

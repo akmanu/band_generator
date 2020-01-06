@@ -22,7 +22,7 @@ def generate_band_info():
 
 	band.update(stats)
 
-	requests.post("localhost:5004", json = band)
+	requests.post("http://localhost:5004/service4", json = band)
 	print("Band stats package sent to service 4")
 
 @app.route('/service3/health-check', methods = ['GET'])

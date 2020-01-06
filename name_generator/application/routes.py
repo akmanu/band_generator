@@ -27,7 +27,7 @@ def generate_band_info():
 
     band = { "name" : band_name, "genre" : genre }
 
-    requests.post("http://localhost:5003", json = band)
+    requests.post("http://localhost:5003/service3", json = band)
     print("Band info sent to service 3")
 
     return "Request received"
