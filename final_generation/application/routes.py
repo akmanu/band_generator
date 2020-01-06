@@ -29,9 +29,9 @@ def generate_band_info():
 	members = {"members" : members}
 	band.update(members)
 
-	requests.post("http://localhost:5001/server", json = band)
+	requests.post("http://server:5001/server/home", json = band)
 	print("Band package sent off to service 1")
 
 @app.route('/service4/health-check', methods = ['GET'])
 def health_check():
-    return f"{words.get_name('forename', 'male', 60)} {words.get_name('forename', 'female', 60)}"
+        return f"{words.get_name('forename', 'male', 60)} {words.get_name('forename', 'female', 60)}"

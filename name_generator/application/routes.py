@@ -22,12 +22,12 @@ def generate_band_info():
         genre = f"{words.get_adjective('genre')} {words.get_noun('genre')}"
         if randint(0,5) == 0:
             genre = f"{genre}-{words.get_noun('genre')}"
-        else:
-            genre = f"{words.get_noun('genre')} {words.get_noun('genre')}"
+    else:
+        genre = f"{words.get_noun('genre')} {words.get_noun('genre')}"
 
     band = { "name" : band_name, "genre" : genre }
 
-    requests.post("http://localhost:5003/service3", json = band)
+    requests.post("http://stats_generator:5003/service3", json = band)
     print("Band info sent to service 3")
 
     return "Request received"

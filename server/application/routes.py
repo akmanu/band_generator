@@ -7,7 +7,7 @@ from application.forms import GenerateBandButton
 import requests
 
 # Route to home page
-@app.route("/server", methods = ["GET", "POST"])
+@app.route("/server/home", methods = ["GET", "POST"])
 def home():
 	# button to generate a random number
 	generate_band = GenerateBandButton()
@@ -25,7 +25,7 @@ def home():
 
 	# send request to name_generator to begin generating when button is pressed
 	if generate_band.is_submitted():
-		requests.get("http://localhost:5002/service2")
+		requests.get("http://name_generator:5002/service2")
 		print("Package requested")
 
 	return render_template("index.html", title = "Home", band = band, generate_band = generate_band)

@@ -8,22 +8,22 @@ import requests
 
 @app.route('/servce3', methods = ["POST"])
 def generate_band_info():
-	band = request.get_json()
+    band = request.get_json()
 
-	weighted_max = [5] * 20 + [10] * 4 + [20] * 1
+    weighted_max = [5] * 20 + [10] * 4 + [20] * 1
 
-	num_of_members = randint(2, weighted_max[randint(0, len(weighted_max)-1)])
-	popularity = randint(1, 101)
-	pretentiousness = randint(1, 101)
+    num_of_members = randint(2, weighted_max[randint(0, len(weighted_max)-1)])
+    popularity = randint(1, 101)
+    pretentiousness = randint(1, 101)
 
-	stats = { "number of members" : num_of_members,
-			"popularity" : popularity,
-			"pretentiousness" : pretentiousness }
+    stats = { "number of members" : num_of_members,
+    		"popularity" : popularity,
+                "pretentiousness" : pretentiousness }
 
-	band.update(stats)
+    band.update(stats)
 
-	requests.post("http://localhost:5004/service4", json = band)
-	print("Band stats package sent to service 4")
+    requests.post("http://localhost:5004/service4", json = band)
+    print("Band stats package sent to service 4")
 
 @app.route('/service3/health-check', methods = ['GET'])
 def health_check():
