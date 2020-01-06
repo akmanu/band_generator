@@ -30,3 +30,4 @@ def generate_band_info():
 	band.update(members)
 
 	requests.post("localhost:5001", json = band)
+	print("Band package sent off to service 1")

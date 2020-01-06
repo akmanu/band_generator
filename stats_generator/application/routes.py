@@ -23,3 +23,4 @@ def generate_band_info():
 	band.update(stats)
 
 	requests.post("localhost:5004", json = band)
+	print("Band stats package sent to service 4")

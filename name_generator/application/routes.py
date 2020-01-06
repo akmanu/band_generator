@@ -28,3 +28,6 @@ def generate_band_info():
 	band = { "name" : band_name, "genre" : genre }
 
 	requests.post("localhost:5003", json = band)
+	print("Band info sent to service 3")
+
+	return "Request received"
