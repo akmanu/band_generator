@@ -14,6 +14,7 @@ def home():
 
 	if request.method == "POST":
 		band = request.get_json()
+		app.logger.info(f"Package received \n Contents: {band}")
 		#return redirect(url_for("home"))
 	else:
 		band = {"name" : "",
@@ -26,7 +27,8 @@ def home():
 	# send request to name_generator to begin generating when button is pressed
 	if generate_band.is_submitted():
 		requests.get("http://name_generator:5002/service2")
-		print("Package requested")
+		app.logger.info(f"Package requested")
+
 
 	return render_template("index.html", title = "Home", band = band, generate_band = generate_band)
 

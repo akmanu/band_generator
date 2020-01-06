@@ -9,6 +9,7 @@ import requests
 @app.route('/servce3', methods = ["POST"])
 def generate_band_info():
     band = request.get_json()
+	app.logger.info(f"Package received \n Contents: {band}")
 
     weighted_max = [5] * 20 + [10] * 4 + [20] * 1
 
@@ -23,7 +24,7 @@ def generate_band_info():
     band.update(stats)
 
     requests.post("http://localhost:5004/service4", json = band)
-    print("Band stats package sent to service 4")
+    app.logger.info(f"Package sent to service 4 \n Contents: {band}")
 
 @app.route('/service3/health-check', methods = ['GET'])
 def health_check():

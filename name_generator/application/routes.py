@@ -8,7 +8,8 @@ import requests
 
 @app.route('/service2', methods = ["GET"])
 def generate_band_info():
-    # Generate Band Name
+    app.logger.info("Generation request received")
+	# Generate Band Name
     if randint(0,1) == 0:
         band_name = f"{words.get_adjective('band')} {words.get_noun('band')}"
     else:
@@ -28,7 +29,8 @@ def generate_band_info():
     band = { "name" : band_name, "genre" : genre }
 
     requests.post("http://stats_generator:5003/service3", json = band)
-    print("Band info sent to service 3")
+    app.logger.info(f"Package sent to service 3 \n Contents: {band}")
+
 
     return "Request received"
 

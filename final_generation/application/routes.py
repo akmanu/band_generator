@@ -9,6 +9,7 @@ import requests
 @app.route('/service4', methods = ["POST"])
 def generate_band_info():
 	band = request.get_json()
+	app.logger.info(f"Package received \n Contents: {band}")
 
 	pretentiousness = band['pretentiousness']
 	if pretentiousness > 50:
@@ -30,7 +31,7 @@ def generate_band_info():
 	band.update(members)
 
 	requests.post("http://server:5001/server/home", json = band)
-	print("Band package sent off to service 1")
+    app.logger.info(f"Package sent to service 1 \n Contents: {band}")
 
 @app.route('/service4/health-check', methods = ['GET'])
 def health_check():
