@@ -19,9 +19,9 @@ def home():
 	else:
 		band = {"name" : "",
 			"genre" : "",
-			"number of members" : None,
-			"popularity" : None,
-			"pretentiousness" : None,
+			"number of members" : "",
+			"popularity" : "",
+			"pretentiousness" : "",
 			"members" : [""]}
 
 	# send request to name_generator to begin generating when button is pressed
@@ -29,9 +29,8 @@ def home():
 		requests.get("http://name_generator:5002/service2")
 		app.logger.info(f"Package requested")
 
-
 	return render_template("index.html", title = "Home", band = band, generate_band = generate_band)
 
 @app.route("/server/health-check", methods=["GET"])
 def health_check():
-    return "OK"
+        return "OK"
