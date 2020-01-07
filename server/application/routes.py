@@ -9,13 +9,14 @@ import requests
 # Route to home page
 @app.route("/server/home", methods = ["GET", "POST"])
 def home():
+	app.logger.info("******************************************************************************")
 	# button to generate a random number
 	generate_band = GenerateBandButton()
+	
 
 	if request.method == "POST":
 		band = request.get_json()
 		app.logger.info(f"Package received \n Contents: {band}")
-		#return redirect(url_for("home"))
 	else:
 		band = {"name" : "",
 			"genre" : "",
