@@ -1,21 +1,27 @@
 '''
 Python file that handles hyperlink routing within the site
 '''
-from flask import render_template, redirect, url_for, request
+from flask import render_template, redirect, url_for, request, jsonify
 from application import app, words
 from random import randint
 import requests
 
-@app.route('/service4', methods = ["GET"])
+@app.route('/service4', methods = ["GET", "POST"])
 def generate_band_info():
     app.logger.info(f"Request received from service 1")
 
-    band = requests.post("http://name_generator:5002/service2")
+    response_service2 = requests.get("http://name_generator:5002/service2")
+    band = response_service2.json()
     app.logger.info(f"Package received from service 2 \n Contents: {band}")
-    stats = requests.post("http://stats_generator:5003/service3")
+    
+    reponse_service3 = requests.get("http://stats_generator:5003/service3")
+    stats = response_service3.json()
     app.logger.info(f"Package received from service 3 \n Contents: {stats}")
+    
     band.update(stats)
-
+    app.logger.info(f"Band: {band}")
+    
+    '''
     pretentiousness = band['pretentiousness']
     if pretentiousness > 50:
         if randint(0,1) == 0:
@@ -33,8 +39,8 @@ def generate_band_info():
     band.update(members)
 
     app.logger.info(f"Package sent to service 1 \n Contents: {band}")
-
-    return band
+    '''
+    return jsonify(band)
 
 @app.route('/service4/health-check', methods = ['GET'])
 def health_check():

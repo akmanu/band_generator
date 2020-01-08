@@ -1,7 +1,7 @@
 '''
 Python file that handles hyperlink routing within the site
 '''
-from flask import render_template, redirect, url_for, request
+from flask import render_template, redirect, url_for, request, jsonify
 from application import app, words
 from random import randint
 import requests
@@ -29,7 +29,7 @@ def generate_band_info():
     band = { "name" : band_name, "genre" : genre }
 
     app.logger.info(f"Package sent to service 4 \n Contents: {band}")
-    return band
+    return jsonify(band)
 
 @app.route('/service2/health-check', methods = ['GET'])
 def health_check(): 
