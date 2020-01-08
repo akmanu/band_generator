@@ -28,11 +28,8 @@ def generate_band_info():
 
     band = { "name" : band_name, "genre" : genre }
 
-    requests.post("http://stats_generator:5003/service3", json = band)
-    app.logger.info(f"Package sent to service 3 \n Contents: {band}")
-
-
-    return "Request received"
+    app.logger.info(f"Package sent to service 4 \n Contents: {band}")
+    return band
 
 @app.route('/service2/health-check', methods = ['GET'])
 def health_check(): 

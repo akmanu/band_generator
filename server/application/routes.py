@@ -9,15 +9,10 @@ import requests
 # Route to home page
 @app.route("/server/home", methods = ["GET", "POST"])
 def home():
-	app.logger.info("******************************************************************************")
 	# button to generate a random number
 	generate_band = GenerateBandButton()
 	
-
-	if request.method == "POST":
-		band = request.get_json()
-		app.logger.info(f"Package received \n Contents: {band}")
-	else:
+	if request.method == "GET":
 		band = {"name" : "",
 			"genre" : "",
 			"number of members" : "",
@@ -27,7 +22,7 @@ def home():
 
 	# send request to name_generator to begin generating when button is pressed
 	if generate_band.is_submitted():
-		requests.get("http://name_generator:5002/service2")
+		requests.get("http://final_generation:5004/service4")
 		app.logger.info(f"Package requested")
 
 	return render_template("index.html", title = "Home", band = band, generate_band = generate_band)
