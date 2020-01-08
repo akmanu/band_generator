@@ -10,11 +10,11 @@ import requests
 def generate_band_info():
     app.logger.info(f"Request received from service 1")
 
-	band = requests.post("http://name_generator:5002/service2")
-	app.logger.info(f"Package received from service 2 \n Contents: {band}")
-	stats = requests.post("http://stats_generator:5003/service3")
-	app.logger.info(f"Package received from service 3 \n Contents: {stats}")
-	band.update(stats)
+    band = requests.post("http://name_generator:5002/service2")
+    app.logger.info(f"Package received from service 2 \n Contents: {band}")
+    stats = requests.post("http://stats_generator:5003/service3")
+    app.logger.info(f"Package received from service 3 \n Contents: {stats}")
+    band.update(stats)
 
     pretentiousness = band['pretentiousness']
     if pretentiousness > 50:
@@ -34,7 +34,7 @@ def generate_band_info():
 
     app.logger.info(f"Package sent to service 1 \n Contents: {band}")
 
-	return band
+    return band
 
 @app.route('/service4/health-check', methods = ['GET'])
 def health_check():

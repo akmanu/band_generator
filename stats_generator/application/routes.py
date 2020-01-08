@@ -20,7 +20,7 @@ def generate_band_info():
     		"popularity" : popularity,
             "pretentiousness" : pretentiousness }
 
-    app.logger.info(f"Package sent to service 4 \n Contents: {band}")
+    app.logger.info(f"Package sent to service 4 \n Contents: {stats}")
     return stats
 
 @app.route('/service3/health-check', methods = ['GET'])
