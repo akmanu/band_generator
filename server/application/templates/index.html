@@ -1,16 +1,16 @@
 {% extends "layout.html" %}
 {% block body_content %}
-	<h1>Home</h1>
     <h2>Band Generator</h2>
     
-    <div>Band Name: {{ band['name'] }}</div>
-    <div>Genre: {{ band['genre'] }}</div>
-    <div>Popularity (out of 100): {{ band['popularity'] }}</div>
-    <div>Pretentiousness (out of 100): {{ band['pretentiousness'] }}</div>
-    <div>Members: 
+    <div><p><b>Band Name: </b>{{ band['name'] }}</p></div>
+    <div><p><b>Genre: </b>{{ band['genre'] }}</p></div>
+    <div><p><b>Popularity (out of 100): </b>{{ band['popularity'] }}</p></div>
+    <div><p><b>Pretentiousness (out of 100): </b>{{ band['pretentiousness'] }}</p></div>
+    <div><p><b>Members: </b><br>
     {% for member in band['members'] %} 
-        <p>{{ member }}</p>
+        - {{ member }}<br>
     {% endfor %}
+	    </p>
     </div>
 
 	<form method="GET" action="">
