@@ -24,7 +24,6 @@ def home():
     if generate_band.is_submitted():
         response = requests.get("http://final_generation:5004/service4")
         band = response.json()
-        app.logger.info(f"Package requested")
 
     return render_template("index.html", title = "Home", band = band, generate_band = generate_band)
 
