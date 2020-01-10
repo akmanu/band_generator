@@ -3,7 +3,8 @@ from application.models import Names
 from sqlalchemy import func
 
 def get_name(name_type, pretentiousness):
-	name = Names.query.filter_by(name_type = name_type).order_by(func.random()).first()
+	query = Names.query.filter_by(name_type = name_type).order_by(func.random()).first()
+	name = query.name
 
 	if pretentiousness > 50:
 		name = accent_random_vowel(name)
