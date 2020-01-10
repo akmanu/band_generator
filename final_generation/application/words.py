@@ -1,5 +1,5 @@
 from random import randint
-from application import models
+from application.models import Names
 from sqlalchemy import func
 
 def get_name(name_type, pretentiousness):
