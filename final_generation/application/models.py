@@ -8,7 +8,7 @@ class names(db.Model):
     # Define columns
     id = db.Column(db.Integer, primary_key = True, autoincrement = True)
     name = db.Column(db.String(50), nullable = False)
-    name_type = db.Column(db.String(10)), nullable = False) # Defines whether the name is a male, female or sur- name
+    name_type = db.Column(db.String(10), nullable = False) # Defines whether the name is a male, female or sur- name
 
     # Defines the format when querying the database in the terminal
     def __repr__(self):
