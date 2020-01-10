@@ -1,60 +1,9 @@
 from random import randint
+from application import models
+from sqlalchemy import func
 
-def get_noun(noun_type):
-	if noun_type == "band":
-		nouns = ["Giant", "Master", "Band", "Music",
-			"Potter", "Ghost", "Girl", "Boy", "Fish", "Dog",
-			"Cat", "Joke", "Bowl", "Cancer", "Youth", "Light",
-			"Luddite", "Choir"
-		]
-	elif noun_type == "genre":
-		nouns = ["Rock", "Skiffle", "Hip Hop", "Jazz",
-			"Fusion", "Muzak", "Punk", "Funk", "Blues", "Folk",
-			"Electronic", "Dubstep", "Trip Hop", "Metal", "Noise"
-		]
-
-	noun = nouns[randint(0, len(nouns)-1)]
-	return noun
-
-def get_adjective(adj_type):
-	if adj_type == "band":
-		adjectives = ["Blue", "Red", "Green", "Orange", 
-			"Grey", "Black", "White", "Vermillion", 
-			"Public", "Quotable", "Bad", "Awful", 
-			"Kind", "Justifiable", "Modern", "Acid",
-			"Limited"
-		]
-	elif adj_type == "genre":
-		adjectives = ["Ironic", "Lofi", "Hifi", "Progressive",
-			"Post"
-		]
-
-	adjective = adjectives[randint(0, len(adjectives)-1)]
-	return adjective
-
-def get_verb(tense):
-	if tense == "past":
-		verbs = []
-	elif tense == "present":
-		verbs = []
-
-	verb = verbs[randint(0, len(verbs)-1)]
-	return verb
-
-def get_name(name_type, gender, pretentiousness):
-	if name_type == "forename":
-		if gender == "male":
-			names = ["Tom", "John", "Harry", "Bob", "Bertrand",
-					"Boris", "Ferdinand", "Harold", "Phillip",
-					"Alphonse"]
-		elif gender == "female":
-			names = ["Rosie", "Kim", "Kelly", "Susie", "Irene",
-					"Felicity", "Jacqueline", "Iris", "Abigail"]	
-	elif name_type == "surname":
-		names = ["Smith", "White", "Johnson", "Phillips", "Burns",
-				"Simpson"]
-
-	name = names[randint(0, len(names)-1)]
+def get_name(name_type, pretentiousness):
+	name = Names.query.filter_by(name_type = name_type).order_by(func.random()).first()
 
 	if pretentiousness > 50:
 		name = accent_random_vowel(name)
@@ -80,3 +29,4 @@ def accent_random_vowel(word):
 	accented_word = accented_word.capitalize()
 	
 	return accented_word
+	
