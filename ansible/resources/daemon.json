@@ -1,0 +1,3 @@
+{
+       "insecure-registries" : ["bg-jenkins:5000"] 
+}

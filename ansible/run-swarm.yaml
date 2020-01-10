@@ -1,0 +1,10 @@
+- hosts: manager-node 
+  become: true 
+  tasks:
+  - name: "Make node manager"
+    docker_swarm:
+      state: present
+  - name: "Copy nginx.conf file"
+    copy:
+      src: ./resources/nginx.conf
+      dest: /home/jenkins/nginx/

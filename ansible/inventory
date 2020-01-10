@@ -1,0 +1,24 @@
+[all]
+35.242.130.197
+34.89.67.13
+
+[all:vars]
+ansible_user=qa-admin
+ansible_ssh_common_args='-o StrictHostKeyChecking=no'
+ansible_ssh_private_key_file=~/.ssh/ansible_id_rsa
+
+[jenkins]
+35.242.130.197
+
+[jenkins:vars]
+ansible_user=qa-admin
+ansible_ssh_common_args='-o StrictHostKeyChecking=no'
+ansible_ssh_private_key_file=~/.ssh/ansible_id_rsa
+
+[manager-node]
+34.89.67.13
+
+[manager-node:vars]
+ansible_user=qa-admin
+ansible_ssh_common_args='-o StrictHostKeyChecking=no'
+ansible_ssh_private_key_file=~/.ssh/ansible_id_rsa
