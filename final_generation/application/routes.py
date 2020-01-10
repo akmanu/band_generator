@@ -42,4 +42,4 @@ def generate_band_info():
 
 @app.route('/service4/health-check', methods = ['GET'])
 def health_check():
-    return f"{words.get_name('forename', 'male', 60)} {words.get_name('forename', 'female', 60)}"
+    return f"{words.get_name('male', 60)} {words.get_name('female', 60)}"
