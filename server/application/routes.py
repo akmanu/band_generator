@@ -11,7 +11,7 @@ import requests
 def home():
     # button to generate a random number
     generate_band = GenerateBandButton()
-	
+    
     if request.method == "GET":
         band = {"name" : "",
                 "genre" : "",
