@@ -9,9 +9,9 @@ import requests
 # Route to home page
 @app.route("/server/home", methods = ["GET", "POST"])
 def home():
-    # button to generate a random number
-    generate_band = GenerateBandButton()
-
+	# button to generate a random number
+	generate_band = GenerateBandButton()
+	
     if request.method == "GET":
         band = {"name" : "",
                 "genre" : "",
@@ -25,8 +25,8 @@ def home():
         response = requests.get("http://final_generation:5004/service4")
         band = response.json()
 
-    return render_template("index.html", title = "Home", band = band, generate_band = generate_band)
+	return render_template("index.html", title = "Home", band = band, generate_band = generate_band)
 
 @app.route("/server/health-check", methods=["GET"])
 def health_check():
-    return "OK"
+        return "OK"
