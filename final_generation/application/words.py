@@ -27,7 +27,12 @@ def accent_random_vowel(word):
 			letter = replacement[randint(0, len(replacement)-1)]
 		accented_word += letter
 		count += 1
-	accented_word = accented_word.capitalize()
+	
+	accented_words = accented_word.split()
+	for word in accented_words:
+		word.capitalize()
+	
+	accented_word = " ".join(accented_words)
 	
 	return accented_word
 	
