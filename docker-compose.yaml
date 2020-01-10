@@ -14,22 +14,22 @@ services:
     depends_on:
     - server
   server:
-    image: 127.0.0.1:5000/server
+    image: bg-jenkins:5000/server
     container_name: server
     build: ./server
     env_file: .env
   name_generator:
-    image: 127.0.0.1:5000/name_generator
+    image: bg-jenkins:5000/name_generator
     container_name: name_generator
     build: ./name_generator
     env_file: .env
   stats_generator:
-    image: 127.0.0.1:5000/stats_generator
+    image: bg-jenkins:5000/stats_generator
     container_name: stats_generator
     build: ./stats_generator
     env_file: .env
   final_generation:
-    image: 127.0.0.1:5000/final_generation
+    image: bg-jenkins:5000/final_generation
     container_name: final_generation
     build: ./final_generation
     env_file: .env
