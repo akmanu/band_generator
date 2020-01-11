@@ -5,6 +5,7 @@ pipeline {
             steps {
                 sh 'bash jenkins/build-images.sh'
                 sh 'export $(xargs <.env)'
+                sh 'printenv'
             }
 	    }
 	    stage('Test Server') {
