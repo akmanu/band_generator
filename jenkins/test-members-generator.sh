@@ -1,4 +1,5 @@
 # test members generator (service 4)
+export $(xargs <.env)
 pip3 install -r 4_members_generator/requirements.txt
 python3 -m pytest --cov=application 4_members_generator/ --cov-report html:cov_html
 ssh jenkins@bg-manager-node "mkdir -p /home/jenkins/test-reports/members_generator/"

@@ -1,4 +1,5 @@
 # test stats generator (service 3)
+export $(xargs <.env)
 pip3 install -r 3_stats_generator/requirements.txt
 python3 -m pytest --cov=application 3_stats_generator/ --cov-report html:cov_html
 ssh jenkins@bg-manager-node "mkdir -p /home/jenkins/test-reports/stats_generator/"

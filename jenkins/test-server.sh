@@ -1,4 +1,5 @@
 # test server (service 1)
+export $(xargs <.env)
 pip3 install -r 1_server/requirements.txt
 python3 -m pytest --cov=application 1_server/ --cov-report html:cov_html
 ssh jenkins@bg-manager-node "mkdir -p /home/jenkins/test-reports/server/"
