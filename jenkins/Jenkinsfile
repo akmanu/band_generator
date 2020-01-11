@@ -6,6 +6,13 @@ pipeline {
                 sh 'bash jenkins/build-images.sh'
             }
 	    }
+        state('Set Env Variables') {
+            sh '''
+                set -a
+                source /home/jenkins/.env
+                set +a
+            '''
+        }   
 	    stage('Test Server') {
             steps {
                 sh 'bash jenkins/test-server.sh'
