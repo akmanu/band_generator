@@ -6,9 +6,9 @@ from application import app, words
 from random import randint
 import requests
 
-@app.route('/service2', methods = ["GET"])
+@app.route('/get_package', methods = ["GET"])
 def generate_band_info():
-    app.logger.info("Generation request received")
+    app.logger.info("Package request received")
 	# Generate Band Name
     if randint(0,1) == 0:
         band_name = f"{words.get_word('adjective', 'band')} {words.get_word('noun','band')}"
@@ -31,6 +31,6 @@ def generate_band_info():
     app.logger.info(f"Package sent to service 4 \n Contents: {band}")
     return jsonify(band)
 
-@app.route('/service2/health-check', methods = ['GET'])
+@app.route('/health-check', methods = ['GET'])
 def health_check(): 
     return f"{words.get_word('adjective','band')} {words.get_word('noun', 'band')}"
