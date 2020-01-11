@@ -2,3 +2,5 @@
 cp /home/jenkins/.env /var/lib/jenkins/workspace/staging/.env
 docker-compose build
 docker-compose push
+pip3 install virtualenv
+virtualenv -p python3 venv

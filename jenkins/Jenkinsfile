@@ -4,8 +4,6 @@ pipeline {
         stage('Build') {
             steps {
                 sh 'bash jenkins/build-images.sh'
-                sh 'export $(xargs <.env)'
-                sh 'printenv'
             }
 	    }
 	    stage('Test Server') {
@@ -15,8 +13,6 @@ pipeline {
         }
 	    stage('Test Name Generator') {
             steps {
-                sh 'pip3 install -r 2_name_generator/requirements.txt'
-                sh 'python3 -m pytest --cov=application 2_name_generator/ --cov-report html:cov_html'
                 sh 'bash jenkins/test-name-generator.sh'
             }
         }
