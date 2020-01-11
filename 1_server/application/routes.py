@@ -23,7 +23,7 @@ def home():
 	# send request to name_generator to begin generating when button is pressed
 	if generate_band.is_submitted():
 		response = requests.get("http://members_generator:5000/get_package")
-        band = response.json()
+		band = response.json()
 		app.logger.info(f"Package requested")
 
 	return render_template("index.html", title = "Home", band = band, generate_band = generate_band)
