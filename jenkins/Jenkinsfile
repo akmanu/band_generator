@@ -1,0 +1,35 @@
+pipeline {
+    agent any
+    stages {
+        stage('Build') {
+            steps {
+                sh 'bash build-images.sh'
+            }
+	    }
+	    stage('Test Server') {
+            steps {
+                sh 'bash test-server.sh'
+            }
+        }
+	    stage('Test Name Generator') {
+            steps {
+                sh 'bash test-name-generator.sh'
+            }
+        }
+	    stage('Test Stats Generator') {
+            steps {
+                sh 'bash test-stats-generator.sh'
+            }
+        }
+	    stage('Test Members Generator') {
+            steps {
+                sh 'bash test-members-generator.sh'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                sh 'deploy.sh'
+            }
+        }
+    }
+}

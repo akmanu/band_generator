@@ -31,3 +31,7 @@ def home():
 @app.route("/health-check", methods=["GET"])
 def health_check():
         return "OK"
+
+@app.route('/coveragereport')
+def coverage_report():
+    return render_template('coveragereport-1.html', title = 'Coverage Report')
