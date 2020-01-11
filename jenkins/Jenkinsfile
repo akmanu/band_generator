@@ -15,8 +15,8 @@ pipeline {
         }
 	    stage('Test Name Generator') {
             steps {
-                pip3 install -r 2_name_generator/requirements.txt
-                python3 -m pytest --cov=application 2_name_generator/ --cov-report html:cov_html
+                sh 'pip3 install -r 2_name_generator/requirements.txt'
+                sh 'python3 -m pytest --cov=application 2_name_generator/ --cov-report html:cov_html'
                 sh 'bash jenkins/test-name-generator.sh'
             }
         }
