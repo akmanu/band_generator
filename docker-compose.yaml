@@ -13,23 +13,34 @@ services:
       protocol: tcp
     depends_on:
     - server
+    - name_generator
+    - stats_generator
+    - members_generator
   server:
     image: bg-jenkins:5000/server
+    deploy:
+      replicas: 3
     container_name: server
-    build: ./server
+    build: ./1_server
     env_file: .env
   name_generator:
     image: bg-jenkins:5000/name_generator
+    deploy:
+      replicas: 3
     container_name: name_generator
-    build: ./name_generator
+    build: ./2_name_generator
     env_file: .env
   stats_generator:
     image: bg-jenkins:5000/stats_generator
+    deploy:
+      replicas: 3
     container_name: stats_generator
-    build: ./stats_generator
+    build: ./3_stats_generator
     env_file: .env
-  final_generation:
-    image: bg-jenkins:5000/final_generation
-    container_name: final_generation
-    build: ./final_generation
+  members_generator:
+    image: bg-jenkins:5000/members_generator
+    deploy:
+      replicas: 3
+    container_name: members_generator
+    build: ./4_members_generator
     env_file: .env

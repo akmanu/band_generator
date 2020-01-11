@@ -1,0 +1,54 @@
+- hosts: all
+  become: true
+  tasks:
+  - name: "Update"
+    apt:
+      name:
+      - apt-transport-https
+      - ca-certificates
+      - curl
+      - gnupg2
+      - software-properties-common
+      - python-pip
+      update_cache: true
+  - name: "Install python docker and docker-compose modules"
+    pip:
+      name:
+      - docker
+      - docker-compose
+      - jsondiff
+  - name: "Get keys"
+    apt_key:
+      url: https://download.docker.com/linux/debian/gpg
+      state: present
+  - name: "Make repository"
+    apt_repository:
+      repo: deb [arch=amd64] https://download.docker.com/linux/debian stretch stable
+      state: present 
+  - name: "Install Docker Engine"
+    apt:
+      name:
+      - docker-ce
+      - docker-ce-cli
+      - containerd.io
+      state: latest
+      update_cache: true
+  - name: "Install docker-compose"
+    get_url:
+      url: https://github.com/docker/compose/releases/download/1.25.0/docker-compose-Linux-x86_64
+      dest: /usr/local/bin/docker-compose
+  - name: "Make docker-compose executable"
+    file:
+      path: /usr/local/bin/docker-compose
+      mode: +x
+  - name: "Add Jenkins user in docker group"
+    user:
+      name: jenkins
+      shell: /bin/bash
+      group: docker
+      state: present
+  - name: "Copy .env to Jenkins home directory"
+    copy:
+      src: ./resources/.env
+      dest: /home/jenkins/
+ 
