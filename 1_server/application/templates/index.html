@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+{% block body_content %}
+    <h2>Band Generator</h2>
+    
+    <div><p><b>Band Name: </b>{{ band['name'] }}</p></div>
+    <div><p><b>Genre: </b>{{ band['genre'] }}</p></div>
+    <div><p><b>Popularity (out of 100): </b>{{ band['popularity'] }}</p></div>
+    <div><p><b>Pretentiousness (out of 100): </b>{{ band['pretentiousness'] }}</p></div>
+    <div><p><b>Members: </b><br>
+    {% for member in band['members'] %} 
+        - {{ member }}<br>
+    {% endfor %}
+	    </p>
+    </div>
+
+	<form method="POST" action="">
+        <div class="form-group">
+            {{ generate_band.submit }}
+        </div>
+    </form>
+{% endblock body_content %}

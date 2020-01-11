@@ -1,0 +1,11 @@
+- hosts: all
+  become: true
+  tasks:
+  - name: "Install daemon.json"
+    copy:
+      dest: /etc/docker/daemon.json
+      src: ./resources/daemon.json 
+  - name: "Restart Docker"
+    service:
+      name: docker
+      state: restarted

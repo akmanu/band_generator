@@ -1,0 +1,11 @@
+- hosts: jenkins 
+  become: true
+  tasks:
+  - name: "Run registry container"
+    docker_container:
+      name: registry
+      image: registry
+      exposed_ports:
+      - 5000
+      ports:
+      - "5000:5000"

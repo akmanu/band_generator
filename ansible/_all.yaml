@@ -1,0 +1,8 @@
+- import_playbook: keygen.yaml
+- import_playbook: install-docker.yaml
+- import_playbook: install-jenkins.yaml
+- import_playbook: jenkins-ssh.yaml
+- import_playbook: swarm-ssh.yaml
+- import_playbook: run-swarm.yaml
+- import_playbook: install-daemon.yaml
+- import_playbook: docker-registry.yaml
