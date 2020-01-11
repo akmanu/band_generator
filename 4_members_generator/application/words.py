@@ -28,7 +28,7 @@ def accent_random_vowel(word):
 		accented_word += letter
 		count += 1
 	
-	accented_word = accented_words.title()
+	accented_word = accented_word.title()
 	
 	return accented_word
 	
