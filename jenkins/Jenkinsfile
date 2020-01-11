@@ -3,32 +3,32 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'bash build-images.sh'
+                sh 'bash jenkins/build-images.sh'
             }
 	    }
 	    stage('Test Server') {
             steps {
-                sh 'bash test-server.sh'
+                sh 'bash jenkins/test-server.sh'
             }
         }
 	    stage('Test Name Generator') {
             steps {
-                sh 'bash test-name-generator.sh'
+                sh 'bash jenkins/test-name-generator.sh'
             }
         }
 	    stage('Test Stats Generator') {
             steps {
-                sh 'bash test-stats-generator.sh'
+                sh 'bash jenkins/test-stats-generator.sh'
             }
         }
 	    stage('Test Members Generator') {
             steps {
-                sh 'bash test-members-generator.sh'
+                sh 'bash jenkins/test-members-generator.sh'
             }
         }
         stage('Deploy') {
             steps {
-                sh 'deploy.sh'
+                sh 'bash jenkins/deploy.sh'
             }
         }
     }
