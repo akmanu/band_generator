@@ -8,10 +8,10 @@
       group: docker
       state: present
   - name: "Install Pytest"
-  pip:
-    name:
-    - pytest
-    - pytest-cov
+    pip:
+      name:
+      - pytest
+      - pytest-cov
   - name: "Install Java"
     apt:
       name: openjdk-8-jdk
