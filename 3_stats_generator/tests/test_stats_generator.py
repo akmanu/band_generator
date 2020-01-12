@@ -29,4 +29,4 @@ class TestStatsGeneration(TestBase):
     
     def test_health_check(self):
         response = self.client.get(url_for("health_check"))
-        self.assertTrue(response.content, "OK")
+        self.assertTrue(response.data, "OK")
