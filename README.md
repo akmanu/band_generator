@@ -1,13 +1,13 @@
 # Randomised Band Generator App
 
 ## Quick Links
-Jenkins: https://35.197.206.61:8080
-Webapp: https://34.89.67.13/home
+Jenkins: http://35.197.206.61:8080
+Webapp: http://34.89.67.13/home
 Coverage Reports:
-- https://34.89.67.13/home/coveragereport
-- https://34.89.67.13/service2/coveragereport
-- https://34.89.67.13/service3/coveragereport
-- https://34.89.67.13/service4/coveragereport
+- http://34.89.67.13/home/coveragereport
+- http://34.89.67.13/service2/coveragereport
+- http://34.89.67.13/service3/coveragereport
+- http://34.89.67.13/service4/coveragereport
 
 ## Functionality
 This is what the app does
