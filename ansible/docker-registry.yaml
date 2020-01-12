@@ -5,7 +5,9 @@
     docker_container:
       name: registry
       image: registry
+      env:
+        REGISTRY_HTTP_ADDR: "0.0.0.0:5001"
       exposed_ports:
       - 5000
       ports:
-      - "5000:5000"
+      - "5001:5001"

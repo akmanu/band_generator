@@ -10,6 +10,7 @@
       - gnupg2
       - software-properties-common
       - python-pip
+      - python3-pip
       update_cache: true
   - name: "Install python docker and docker-compose modules"
     pip:
