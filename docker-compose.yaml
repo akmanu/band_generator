@@ -23,6 +23,10 @@ services:
     container_name: server
     build: ./1_server
     env_file: .env
+    volumes:
+    - type: bind
+      source: ~/test-reports/server/coverage.html
+      target: /opt/server/application/templates/coverage.html
   name_generator:
     image: bg-jenkins-2:5001/name_generator
     deploy:
@@ -30,6 +34,10 @@ services:
     container_name: name_generator
     build: ./2_name_generator
     env_file: .env
+    volumes:
+      - type: bind
+        source: ~/test-reports/server/coverage.html
+        target: /opt/server/application/templates/coverage.html
   stats_generator:
     image: bg-jenkins-2:5001/stats_generator
     deploy:
@@ -37,6 +45,10 @@ services:
     container_name: stats_generator
     build: ./3_stats_generator
     env_file: .env
+    volumes:
+      - type: bind
+        source: ~/test-reports/server/coverage.html
+        target: /opt/server/application/templates/coverage.html
   members_generator:
     image: bg-jenkins-2:5001/members_generator
     deploy:
@@ -44,3 +56,7 @@ services:
     container_name: members_generator
     build: ./4_members_generator
     env_file: .env
+    volumes:
+      - type: bind
+        source: ~/test-reports/server/coverage.html
+        target: /opt/server/application/templates/coverage.html
