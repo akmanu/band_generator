@@ -35,4 +35,4 @@ def health_check():
 
 @app.route('/coveragereport')
 def coverage_report():
-    return render_template('coveragereport-1.html', title = 'Coverage Report')
+    return render_template('coveragereport.html', title = 'Coverage Report')
