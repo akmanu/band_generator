@@ -36,7 +36,7 @@ services:
     env_file: .env
     volumes:
       - type: bind
-        source: ~/test-reports/server/coverage.html
+        source: ~/test-reports/name_generator/coverage.html
         target: /opt/server/application/templates/coverage.html
   stats_generator:
     image: bg-jenkins-2:5001/stats_generator
@@ -47,7 +47,7 @@ services:
     env_file: .env
     volumes:
       - type: bind
-        source: ~/test-reports/server/coverage.html
+        source: ~/test-reports/stats_generator/coverage.html
         target: /opt/server/application/templates/coverage.html
   members_generator:
     image: bg-jenkins-2:5001/members_generator
@@ -58,5 +58,5 @@ services:
     env_file: .env
     volumes:
       - type: bind
-        source: ~/test-reports/server/coverage.html
+        source: ~/test-reports/members_generator/coverage.html
         target: /opt/server/application/templates/coverage.html
