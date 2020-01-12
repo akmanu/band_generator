@@ -33,6 +33,6 @@ def home():
 def health_check():
         return "OK"
 
-@app.route('/coveragereport')
+@app.route('/home/coveragereport')
 def coverage_report():
     return render_template('coveragereport.html', title = 'Coverage Report')
