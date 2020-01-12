@@ -28,7 +28,7 @@ def home():
 		band = response.json()
 		app.logger.info(f"Package requested")
 
-	return render_template("index.html", title = "Home", band = band, generate_band = generate_band, build_id = build_id)
+	return render_template("index.html", title = "Home", band = band, generate_band = generate_band, version = version)
 
 @app.route("/home/health-check", methods=["GET"])
 def health_check():
