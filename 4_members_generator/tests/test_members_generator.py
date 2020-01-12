@@ -37,15 +37,11 @@ class TestBase(TestCase):
         db.session.remove()
         db.drop_all()
 
-class TestNameGeneration(TestBase):
-    def test_connection(self):
-        response = self.client.get(url_for("generate_band_info"))
-        self.assertEqual(response.status_code, 200)
-
+class TestMemberGeneration(TestBase):
     def test_package_retrieval(self):
         response = self.client.get(url_for("generate_band_info"))
-        self.assertTrue("name" in response.json(), msg = None)
-        self.assertTrue("genre" in response.json(), msg = None)
+        self.assertTrue("name" in response.json)
+        self.assertTrue("genre" in response.json)
     
     def test_database(self):
         male_member = Names.query.filter_by(name_type = "male").first()

@@ -46,9 +46,8 @@ class TestNameGeneration(TestBase):
 
     def test_package_retrieval(self):
         response = self.client.get(url_for("generate_band_info"))
-        package = response.json
-        self.assertTrue("name" in package)
-        self.assertTrue("genre" in package)
+        self.assertTrue("name" in response.json)
+        self.assertTrue("genre" in response.json)
     
     def test_database(self):
         band_noun = Words.query.filter_by(word_type = "noun", band_or_genre = "band").first()
