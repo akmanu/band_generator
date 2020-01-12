@@ -7,5 +7,6 @@
       image: registry
       exposed_ports:
       - 5000
+      - 5001
       ports:
-      - "5000:5000"
+      - "5001:5000"
