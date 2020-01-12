@@ -24,7 +24,7 @@ services:
     build: ./1_server
     env_file: .env
     environment:
-    - VERSION=$BUILD_ID
+    - VERSION=0.$BUILD_ID
     volumes:
     - type: bind
       source: ~/test-reports/server/coverage.html

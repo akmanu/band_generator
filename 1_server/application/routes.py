@@ -10,7 +10,7 @@ import requests
 # Route to home page
 @app.route("/home", methods = ["GET", "POST"])
 def home():
-	build_id = getenv("BUILD_ID")
+	version = getenv("VERSION")
 	# button to generate a random number
 	generate_band = GenerateBandButton()
 	
