@@ -16,15 +16,15 @@ class TestStatsGeneration(TestBase):
 
     def test_package_retrieval(self):
         response = self.client.get(url_for("generate_band_info"))
-        package = response.json()
+        package = response.json
 
-        self.assertTrue("number of members" in response.json(), msg = None)
+        self.assertTrue("number of members" in package, msg = None)
         self.assertTrue(package["num_of_members"] > 0 and package["num_of_members"] <= 20, msg = None)
 
-        self.assertTrue("popularity" in response.json(), msg = None)
+        self.assertTrue("popularity" in package, msg = None)
         self.assertTrue(package["popularity"] > 0 and package["popularity"] <= 100, msg = None)
 
-        self.assertTrue("pretentiousness" in response.json(), msg = None)
+        self.assertTrue("pretentiousness" in package, msg = None)
         self.assertTrue(package["pretentiousness"] > 0 and package["pretentiousness"] <= 100, msg = None)
     
     def test_health_check(self):
