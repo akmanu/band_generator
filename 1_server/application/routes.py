@@ -8,6 +8,7 @@ import requests
 
 # Route to home page
 @app.route("/", methods = ["GET", "POST"])
+@app.route("/home", methods = ["GET", "POST"])
 def home():
 	# button to generate a random number
 	generate_band = GenerateBandButton()
