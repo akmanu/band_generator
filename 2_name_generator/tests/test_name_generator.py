@@ -62,4 +62,4 @@ class TestNameGeneration(TestBase):
     
     def test_health_check(self):
         response = self.client.get(url_for("health_check"))
-        self.assertEqual(response.content, "band adjective band noun")
+        self.assertEqual(response.body, "band adjective band noun")
