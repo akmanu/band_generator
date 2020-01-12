@@ -17,28 +17,28 @@ services:
     - stats_generator
     - members_generator
   server:
-    image: bg-jenkins:5001/server
+    image: bg-jenkins-2:5001/server
     deploy:
       replicas: 3
     container_name: server
     build: ./1_server
     env_file: .env
   name_generator:
-    image: bg-jenkins:5001/name_generator
+    image: bg-jenkins-2:5001/name_generator
     deploy:
       replicas: 3
     container_name: name_generator
     build: ./2_name_generator
     env_file: .env
   stats_generator:
-    image: bg-jenkins:5001/stats_generator
+    image: bg-jenkins-2:5001/stats_generator
     deploy:
       replicas: 3
     container_name: stats_generator
     build: ./3_stats_generator
     env_file: .env
   members_generator:
-    image: bg-jenkins:5001/members_generator
+    image: bg-jenkins-2:5001/members_generator
     deploy:
       replicas: 3
     container_name: members_generator
