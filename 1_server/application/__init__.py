@@ -5,5 +5,6 @@ Requires environment variables to be set in order to run
 from flask import Flask, render_template
 
 app = Flask(__name__)
+app.config['SECRET_KEY'] = getenv('MYSQL_SECRETKEY')
 
 from application import routes
