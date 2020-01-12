@@ -38,11 +38,6 @@ class TestBase(TestCase):
         db.drop_all()
 
 class TestMemberGeneration(TestBase):
-    def test_package_retrieval(self):
-        response = self.client.get(url_for("generate_band_info"))
-        self.assertTrue("name" in response.json)
-        self.assertTrue("genre" in response.json)
-    
     def test_database(self):
         male_member = Names.query.filter_by(name_type = "male").first()
         female_member = Names.query.filter_by(name_type = "female").first()
