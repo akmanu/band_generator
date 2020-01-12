@@ -37,7 +37,7 @@ class TestBase(TestCase):
         db.session.remove()
         db.drop_all()
 
-class TestNameGeneration(TestCase):
+class TestNameGeneration(TestBase):
     def test_connection(self):
         response = self.client.get(url_for("generate_band_info"))
         self.assertEqual(response.status_code, 200)

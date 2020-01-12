@@ -9,7 +9,7 @@ class TestBase(TestCase):
         config_name = "testing"
         return app
 
-class TestStatsGeneration(TestCase):
+class TestStatsGeneration(TestBase):
     def test_connection(self):
         response = self.client.get(url_for("generate_band_info"))
         self.assertEqual(response.status_code, 200)
