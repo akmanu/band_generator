@@ -4,11 +4,13 @@ Python file that handles hyperlink routing within the site
 from flask import render_template, redirect, url_for, request
 from application import app
 from application.forms import GenerateBandButton
+from os import getenv
 import requests
 
 # Route to home page
 @app.route("/home", methods = ["GET", "POST"])
 def home():
+	build_id = getenv("BUILD_ID")
 	# button to generate a random number
 	generate_band = GenerateBandButton()
 	
