@@ -6,12 +6,12 @@ from application import app, words
 from random import randint
 import requests
     
-@app.route('/get_package', methods = ["GET"])
+@app.route('/service4/get_package', methods = ["GET"])
 def generate_band_info():
     app.logger.info(f"Request received from service 1")
     
-    service2_response = requests.get("http://name_generator:5000/get_package")
-    service3_response = requests.get("http://stats_generator:5000/get_package")
+    service2_response = requests.get("http://name_generator:5000/service2/get_package")
+    service3_response = requests.get("http://stats_generator:5000/service3/get_package")
     band = service2_response.json()
     app.logger.info(f"Package received from service 2 \n Contents: {band}")
     stats = service3_response.json()
@@ -40,6 +40,10 @@ def generate_band_info():
     
     return jsonify(band)
 
-@app.route('/health-check', methods = ['GET'])
+@app.route('/service4/health-check', methods = ['GET'])
 def health_check():
     return f"{words.get_name('male', 60)} {words.get_name('female', 60)}"
+
+@app.route('/service4/coveragereport')
+def coverage_report():
+    return render_template('coverage.html', title = 'Coverage Report')

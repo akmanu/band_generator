@@ -6,7 +6,7 @@ from application import app
 from random import randint
 import requests
 
-@app.route('/get_package', methods = ["GET"])
+@app.route('/service3/get_package', methods = ["GET"])
 def generate_band_info():
     app.logger.info(f"Package request received")
 
@@ -23,6 +23,10 @@ def generate_band_info():
     app.logger.info(f"Package sent to service 4 \n Contents: {stats}")
     return jsonify(stats)
 
-@app.route('/health-check', methods = ['GET'])
+@app.route('/service3/health-check', methods = ['GET'])
 def health_check():
     return "OK"
+
+@app.route('/service3/coveragereport')
+def coverage_report():
+    return render_template('coverage.html', title = 'Coverage Report')
