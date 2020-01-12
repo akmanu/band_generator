@@ -28,5 +28,5 @@ class TestStatsGeneration(TestBase):
         self.assertTrue(package["pretentiousness"] > 0 and package["pretentiousness"] <= 100, msg = None)
     
     def test_health_check(self):
-        response = self.client.get(url_for("health-check"))
+        response = self.client.get(url_for("health_check"))
         self.assertTrue(response.content, "OK")

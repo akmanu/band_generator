@@ -57,5 +57,5 @@ class TestNameGeneration(TestBase):
         self.assertEqual(surname.name, "surname")
     
     def test_health_check(self):
-        response = self.client.get(url_for("health-check"))
+        response = self.client.get(url_for("health_check"))
         self.assertEqual(response.status_code, 200)

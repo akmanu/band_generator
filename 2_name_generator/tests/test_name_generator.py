@@ -45,7 +45,7 @@ class TestNameGeneration(TestBase):
         self.assertEqual(response.status_code, 200)
 
     def test_package_retrieval(self):
-        response = self.client.get(url_for("/get_package"))
+        response = self.client.get(url_for("generate_band_info"))
         self.assertTrue("name" in response.json(), msg = None)
         self.assertTrue("genre" in response.json(), msg = None)
     
@@ -61,5 +61,5 @@ class TestNameGeneration(TestBase):
         self.assertEqual(genre_adjective.word, "genre adjective")
     
     def test_health_check(self):
-        response = self.client.get(url_for("health-check"))
+        response = self.client.get(url_for("health_check"))
         self.assertEqual(response.content, "band adjective band noun")
