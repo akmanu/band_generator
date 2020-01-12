@@ -17,7 +17,7 @@ services:
     - stats_generator
     - members_generator
   server:
-    image: bg-jenkins-2:5001/server
+    image: bg-jenkins-2:5001/server:$BUILD_ID
     deploy:
       replicas: 3
     container_name: server
@@ -28,7 +28,7 @@ services:
       source: ~/test-reports/server/coverage.html
       target: /opt/server/application/templates/coverage.html
   name_generator:
-    image: bg-jenkins-2:5001/name_generator
+    image: bg-jenkins-2:5001/name_generator:$BUILD_ID
     deploy:
       replicas: 3
     container_name: name_generator
@@ -39,7 +39,7 @@ services:
         source: ~/test-reports/name_generator/coverage.html
         target: /opt/server/application/templates/coverage.html
   stats_generator:
-    image: bg-jenkins-2:5001/stats_generator
+    image: bg-jenkins-2:5001/stats_generator:$BUILD_ID
     deploy:
       replicas: 3
     container_name: stats_generator
@@ -50,7 +50,7 @@ services:
         source: ~/test-reports/stats_generator/coverage.html
         target: /opt/server/application/templates/coverage.html
   members_generator:
-    image: bg-jenkins-2:5001/members_generator
+    image: bg-jenkins-2:5001/members_generator:$BUILD_ID
     deploy:
       replicas: 3
     container_name: members_generator
