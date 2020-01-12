@@ -23,6 +23,8 @@ services:
     container_name: server
     build: ./1_server
     env_file: .env
+    environment:
+    - VERSION=$BUILD_ID
     volumes:
     - type: bind
       source: ~/test-reports/server/coverage.html
