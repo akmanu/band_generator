@@ -39,11 +39,11 @@ class TestBase(TestCase):
 
 class TestNameGeneration(TestCase):
     def test_connection(self):
-        response = self.client.get(url_for("/get_package"))
+        response = self.client.get(url_for("generate_band_info"))
         self.assertEqual(response.status_code, 200)
 
     def test_package_retrieval(self):
-        response = self.client.get(url_for("/get_package"))
+        response = self.client.get(url_for("generate_band_info"))
         self.assertTrue("name" in response.json(), msg = None)
         self.assertTrue("genre" in response.json(), msg = None)
     
@@ -57,5 +57,5 @@ class TestNameGeneration(TestCase):
         self.assertEqual(surname.name, "surname")
     
     def test_health_check(self):
-        response = self.client.get(url_for("/health-check"))
+        response = self.client.get(url_for("health-check"))
         self.assertEqual(response.status_code, 200)

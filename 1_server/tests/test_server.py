@@ -12,5 +12,5 @@ class TestBase(TestCase):
 
 class TestServer(TestBase):
     def test_connection(self):
-        response = self.client.get(url_for("/home"))
+        response = self.client.get(url_for("home"))
         self.assertEqual(response.status_code, 200)

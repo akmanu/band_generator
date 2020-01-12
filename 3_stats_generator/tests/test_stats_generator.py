@@ -11,11 +11,11 @@ class TestBase(TestCase):
 
 class TestStatsGeneration(TestCase):
     def test_connection(self):
-        response = self.client.get(url_for("/get_package"))
+        response = self.client.get(url_for("generate_band_info"))
         self.assertEqual(response.status_code, 200)
 
     def test_package_retrieval(self):
-        response = self.client.get(url_for("/get_package"))
+        response = self.client.get(url_for("generate_band_info"))
         package = response.json()
 
         self.assertTrue("number of members" in response.json(), msg = None)
@@ -28,5 +28,5 @@ class TestStatsGeneration(TestCase):
         self.assertTrue(package["pretentiousness"] > 0 and package["pretentiousness"] <= 100, msg = None)
     
     def test_health_check(self):
-        response = self.client.get(url_for("/health-check"))
+        response = self.client.get(url_for("health-check"))
         self.assertTrue(response.content, "OK")

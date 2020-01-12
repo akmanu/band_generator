@@ -41,7 +41,7 @@ class TestBase(TestCase):
 
 class TestNameGeneration(TestCase):
     def test_connection(self):
-        response = self.client.get(url_for("/get_package"))
+        response = self.client.get(url_for("generate_band_info"))
         self.assertEqual(response.status_code, 200)
 
     def test_package_retrieval(self):
@@ -61,5 +61,5 @@ class TestNameGeneration(TestCase):
         self.assertEqual(genre_adjective.word, "genre adjective")
     
     def test_health_check(self):
-        response = self.client.get(url_for("/health-check"))
+        response = self.client.get(url_for("health-check"))
         self.assertEqual(response.content, "band adjective band noun")
