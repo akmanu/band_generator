@@ -30,7 +30,10 @@ def generate_band_info():
     gender = ["male", "female"]
     for _ in range(0, band['number of members']):
         member_gender = gender[randint(0,1)]
-        member_name = f"{words.get_name(member_gender, pretentiousness)} {words.get_name('surname', pretentiousness)}"
+        if randint(0,2) == 0:
+            member_name = f"{words.get_name(member_gender, pretentiousness)} {words.get_name('surname', pretentiousness)}-{words.get_name('surname', pretentiousness)}"
+        else:
+            member_name = f"{words.get_name(member_gender, pretentiousness)} {words.get_name('surname', pretentiousness)}"
         members.append(member_name)
 
     members = {"members" : members}
