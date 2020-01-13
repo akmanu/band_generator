@@ -21,7 +21,7 @@ This app is a basic Flask-based web app that produces randomised band informatio
 
 ![gui][gui]
 
-If the pretentiousness score is above a certain level (currently set to 50) it will begin to randomly accent vowels in the band name and the names of its members, in the vein of Motörhead's superfluous umlaut over the second 'o'. That's pretty much it for the app.
+If the pretentiousness score is above a certain level (currently set to 50) it will begin to randomly accent vowels in the band name and the names of its members, in the vein of Motörhead's superfluous umlaut over the second 'o'.
 
 ### App Structure
 ![appstructure][appstructure]
@@ -45,9 +45,13 @@ The app is made up of five distinct services:
 ## Installation Instructions
 ### Requirements:
 * Installation of Ansible on your machine (instructions can be found here: https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html)
+* Generate a keypair for Ansible such that it can SSH into your machines:
+   1. In your terminal, run `ssh-keygen -f ansible_id_rsa`
+   2. Copy the contents of 'ansible_id_rsa.pub' into the file '.ssh/authorized_keys' 
 * Create two GCP instances called bg-jenkins-2 and bg-swarm-manager
    * bg-jenkins-2 MUST be running Ubuntu 16+ or other Linux machine capable of using Python 3.6 or above – Debian 9 is currently only compatible with Python 3.5.3 which will cause issues when running Pytest due to f-string interpolation only being introduced in 3.6
 * Edit the ansible/inventory file to include the IP addresses of your Jenkins VM and Swarm Manager VM
+* Create a MySQL database on GCP
 * Creation of a .env file containing the following environmental files that will allow your app to connect the SQL database you have creates:
    * MYSQL_USER=(your MySQL instance user)
    * MYSQL_PASSWORD=(your MySQL instance password)
@@ -81,12 +85,18 @@ The app is made up of five distinct services:
 ![cd][cd]
 
 Pictured above is the development and deployment pipeline. It consists of the following elements:
+- **Ansible** on a control machine for configuration management
+- **Git** for version control
+- **Jenkins** on a dedicated VM to handle automated code integration and deployment
+- **Docker** to build and run applications within lightweight container environments
 
 ### Ansible
-Ansible is a configuration automation tool used to easily install and configure all the tools and dependencies on each machine in the system. It runs on the concept of idempotency, meaning that running it will cause each system to revert back to its original state should an issue arise. It is run from a single control machine outside of the deployment pipeline.
+Ansible is a configuration automation tool used to easily install and configure all the tools and dependencies on each machine in the system. It runs on the concept of idempotency, meaning that running it will cause each system to revert back to its original state should an issue arise. It is run from a single control machine outside of the deployment pipeline. The automation is 
 
 ### Jenkins
 ![jenkins][jenkins]
+
+Jenkins is work automation service that provides continuous code integration as well as automating application deployment. When code is committed and pushed to the master branch of this repository, 
 
 ### Docker
 Docker is a collection of 'platform as service' tools that are used to containerise applications in lightweight OS environments. These containers can be saved as images and stored in registries. This allows each iteration of the application run on any system because all its dependencies are contained within the Docker container.
@@ -102,6 +112,11 @@ Swarm can also orchestrate services across different machines, known as nodes. N
 ### Docker Stack
 Docker Stack is a command in Docker that allows you to manage a collection of containers across a Docker Swarm. Simply running `docker stack deploy your-docker-compose.yaml` on a Manager node will deploy your containers across your Swarm with as many replicas as you specify in docker-compose.yaml. Each time you run `docker stack deploy`, Stack will update each container with the image version you've specified (e.g. the latest one) one-by-one, such that each container is pulled down individually and run back up with the updated image while the other containers are left running. This allows updates to be rolled out without interrupting the user experience.
 
+Currently this system is designed to replicate the full app stack 3 times, but this can be increased from the 'docker-compose.yaml' file under the `replicas: 3` variable declaration.
+
+![dockerservices][dockerservices]
+You can check the status of your services by running `docker services ls`
+
 ### Testing
 pytest is used to run unit tests on the app. The logs for each test can be viewed in the 'staging' job
 
@@ -111,6 +126,8 @@ pytest also produces a coverage report to show how much of the code in the app h
 
 ## Project Planning
 Trello Board: https://trello.com/b/ULYL5Kwb/band-generator
+
+![trello][trello]
 
 The board has been designed such that elements of the project move from left to right from their point of conception to being finished and fully implemented. Each card is also colour-coded according to which element of the project it pertains, e.g. Flask, Database, Jenkins, User Stories, etc.
 
@@ -141,3 +158,5 @@ As the purpose of this project was largely to learn and implement tools for cont
 [cd]: https://i.imgur.com/nIAf4pX.png
 [testcoverage]: https://i.imgur.com/J23nSPD.png
 [initadminpass]: https://i.imgur.com/AWA5LRF.png
+[dockerservices]: https://i.imgur.com/UtgSO5M.png
+[trello]: https://i.imgur.com/6nZAR1L.png
