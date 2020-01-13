@@ -1,5 +1,25 @@
 # Randomised Band Generator App
 
+## Contents
+* [Functionality](#functionality)
+   * [App Structure](#app-structure)
+* [Installation Instructions](#installation-instructions)
+   * [Requirements](#requirements)
+   * [Installation](#installation)
+* [Project Tracking](#project-tracking)
+* [System Structure](#system-structure)
+   * [Ansible](#ansible)
+   * [Jenkins](#jenkins)
+   * [Docker](#docker)
+   * [Docker Compose](#docker-compose)
+   * [Docker Swarm](#docker-swarm)
+   * [Docker Stack](#docker-stack)
+   * [Testing](#testing)
+* [Project Planning](#project-planning)
+* [Risk Assessment](#risk-assessment)
+* [Evaluation & Future Improvements](#evaluation--future-improvements)
+* [Authors](#authors)
+
 ## Quick Links
 Jenkins: http://35.197.206.61:8080
 
@@ -154,6 +174,9 @@ As the purpose of this project was largely to learn and implement tools for cont
    The app will deploy automatically as expected, but the process does result in a small amount of downtime (between 5-10 seconds). This is less than ideal, of course, and Docker should be able to deploy these services without any interruption. I imagine the issue is that the services are being pulled down in an order that means that the server will be running another service is being pulled down. This seems counter to how Docker Stack should work, however. Perhaps I've configured something incorrectly, or more replicas are required for smooth rolling updates.
 
    The addition of one or more worker nodes would also allow for greater balancing of services across a range of machines, meaning that more resources can be dedicated per container. It also means that in the event of a machine failure, the Manager Node will be able to run up services that are lost on that machine automatically.
+
+## Author
+Harry Volker
 
 [appstructure]: https://i.imgur.com/SJFN8R0.png
 [jenkins]: https://i.imgur.com/27WGWMm.png
