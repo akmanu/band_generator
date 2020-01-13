@@ -139,17 +139,21 @@ Risk Assessment: https://docs.google.com/spreadsheets/d/13zB-tZh8uB5HHjGJrKiGPng
 
 As the purpose of this project was largely to learn and implement tools for continuous deployment, most of the risks I identified and aimed to tackle were in relation to continuous availability of the app on the user end. One of the many benefits of using Docker – in particular Docker Swarm in conjunction with Docker Stack – is its ability to deploy updates to services incrementally, such that an update can be rolled out without affecting the user experience at all. The assessment was therefore written from the perspective of the developer having produced the app and considering the risks associated with deploying it.
 
-## Future Improvements
-- Worker node implementation
-- More replication
-- Docker registry on a dedicated VM
-- Better tests involving mock responses
-- Full automated installation with Ansible
-   - Persistence of Jenkins configuration and logs
-   - Automated initial SSH handshake
-   - Automated spinning up of VMs on GCP
-- Greater complexity of the band generation
+## Evaluation & Future Improvements
+- Automated System Configuration
+   Ansible has proven to be an invaluable tool for this project, speeding up the installation process of each machine in the system. There are some things it doesn't automate though, such as Jenkins' pipeline deployment job. Being able to configure this automatically, as well as persist build logs, would be very handy (particularly considering I'd lost a previous Jenkins server earlier in the project). Similarly it'd be beneficial to be able to spin up GCP compute instances and SQL databases automatically from the Ansible playbook.
 
+- Integration and Testing
+   Jenkins successfully pulls code from Git based on GitHub webhooks when commits are pushed to the repo. The images it builds do so correctly and are sucessfully pushed to the local Docker registry with individual build names, allowing the system to roll back to a previous version if needs be. Tests are performed correctly and succeed, and are easily accessible in the pipeline job.
+
+   The testing provides good coverage for most of the application, but much of the functionality of services 1 and 4 require 'mock responses' to test correctly, something I currently have minimal knowledge of. These mock responses allow the tests to fabricate HTTP requests and packages as placeholders to test the functionality of the web app without needing it to run on a network.
+
+   It would be a good idea to put the Docker registry on a dedicated VM so that it is not running on the same system as Jenkins, meaning that Jenkins doesn't have to share any extra resources with another service on its machine.
+
+- Deployment
+   The app will deploy automatically as expected, but the process does result in a small amount of downtime (between 5-10 seconds). This is less than ideal, of course, and Docker should be able to deploy these services without any interruption. I imagine the issue is that the services are being pulled down in an order that means that the server will be running another service is being pulled down. This seems counter to how Docker Stack should work, however. Perhaps I've configured something incorrectly, or more replicas are required for smooth rolling updates.
+
+   The addition of one or more worker nodes would also allow for greater balancing of services across a range of machines, meaning that more resources can be dedicated per container. It also means that in the event of a machine failure, the Manager Node will be able to run up services that are lost on that machine automatically.
 
 [appstructure]: https://i.imgur.com/SJFN8R0.png
 [jenkins]: https://i.imgur.com/27WGWMm.png
