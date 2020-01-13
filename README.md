@@ -1,4 +1,4 @@
-# Randomised Band Generator App
+# Randomised Band Generator App (2nd Implementation)
 
 ## Quick Links
 Jenkins: http://35.197.206.61:8080
