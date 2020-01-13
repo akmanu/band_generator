@@ -3,7 +3,7 @@
 ## Quick Links
 Jenkins: http://35.197.206.61:8080
 
-Webapp: http://34.89.67.13/home
+Webapp: http://35.242.130.197/home
 
 Coverage Reports:
 - http://34.89.67.13/home/coveragereport
