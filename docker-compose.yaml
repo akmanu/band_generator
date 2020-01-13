@@ -29,6 +29,10 @@ services:
     - type: bind
       source: ~/test-reports/server/coverage.html
       target: /opt/server/application/templates/coverage.html
+    depends_on:
+    - name_generator
+    - stats_generator
+    - members_generator
   name_generator:
     image: bg-jenkins-2:5001/name_generator:$BUILD_ID
     deploy:
@@ -62,3 +66,6 @@ services:
       - type: bind
         source: ~/test-reports/members_generator/coverage.html
         target: /opt/server/application/templates/coverage.html
+    depends_on: 
+    - name_generator
+    - stats_generator
