@@ -1,6 +1,7 @@
 [all]
-34.89.67.13
+35.242.130.197
 35.197.206.61
+35.189.78.14
 
 [all:vars]
 ansible_user=qa-admin
@@ -16,7 +17,8 @@ ansible_ssh_common_args='-o StrictHostKeyChecking=no'
 ansible_ssh_private_key_file=~/.ssh/ansible_id_rsa
 
 [manager-node]
-34.89.67.13
+35.242.130.197
+35.189.78.14
 
 [manager-node:vars]
 ansible_user=qa-admin
