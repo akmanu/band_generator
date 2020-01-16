@@ -1,5 +1,18 @@
 # Randomised Band Generator App
 
+## Quick Links
+Presentation: https://docs.google.com/presentation/d/1ed6h4c7urWDXu6u7kOrGASAbsrj8t2PsCghiSruv0KI/edit?usp=sharing
+
+Jenkins: http://35.197.206.61:8080
+
+Webapp: http://35.242.130.197/home
+
+Coverage Reports:
+- http://34.89.67.13/home/coveragereport
+- http://34.89.67.13/service2/coveragereport
+- http://34.89.67.13/service3/coveragereport
+- http://34.89.67.13/service4/coveragereport
+
 ## Contents
 * [Functionality](#functionality)
    * [App Structure](#app-structure)
@@ -19,17 +32,6 @@
 * [Risk Assessment](#risk-assessment)
 * [Evaluation & Future Improvements](#evaluation--future-improvements)
 * [Authors](#authors)
-
-## Quick Links
-Jenkins: http://35.197.206.61:8080
-
-Webapp: http://35.242.130.197/home
-
-Coverage Reports:
-- http://34.89.67.13/home/coveragereport
-- http://34.89.67.13/service2/coveragereport
-- http://34.89.67.13/service3/coveragereport
-- http://34.89.67.13/service4/coveragereport
 
 ## Functionality
 This app is a basic Flask-based web app that produces randomised band information at the click of a button, i.e.:
