@@ -3,9 +3,9 @@
 ## Quick Links
 Presentation: https://docs.google.com/presentation/d/1ed6h4c7urWDXu6u7kOrGASAbsrj8t2PsCghiSruv0KI/edit?usp=sharing
 
-Jenkins: http://35.197.206.61:8080
+Jenkins: http://34.89.67.13:8080
 
-Webapp: http://35.242.130.197/home
+Webapp: http://35.189.78.14/home
 
 Coverage Reports:
 - http://34.89.67.13/home/coveragereport
