@@ -1,4 +1,4 @@
-# Randomised Band Generator App
+# Randomised Band Generator App (2nd Implementation)
 
 ## Quick Links
 Presentation: https://docs.google.com/presentation/d/1ed6h4c7urWDXu6u7kOrGASAbsrj8t2PsCghiSruv0KI/edit?usp=sharing
